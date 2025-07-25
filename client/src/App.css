@@ -1,0 +1,378 @@
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  margin: 0;
+  background: #f5f7fa;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #0073e6;
+  color: #fff;
+  padding: 0 32px;
+  height: 56px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  gap: 24px;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 22px;
+  letter-spacing: 1px;
+  margin-right: 24px;
+}
+
+.navbar .nav-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.navbar .search-bar {
+  flex: 1;
+  margin: 0 32px;
+  min-width: 200px;
+  max-width: 400px;
+  display: flex;
+}
+
+.navbar input[type='text'] {
+  width: 100%;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  font-size: 15px;
+}
+
+.navbar .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Tombol utama */
+button, .nav-buttons button {
+  background: #0073e6;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 9px 22px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.18s, box-shadow 0.18s, transform 0.12s;
+  box-shadow: 0 2px 8px rgba(0,115,230,0.08);
+  outline: none;
+}
+button:active, .nav-buttons button:active {
+  transform: scale(0.97);
+}
+button:hover, .nav-buttons button:hover {
+  background: #005bb5;
+  box-shadow: 0 4px 16px rgba(0,115,230,0.12);
+}
+button:disabled {
+  background: #b3d6f7;
+  color: #fff;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Tombol aksi kecil (upvote, comment, dsb) */
+.action-btn {
+  background: #f5f7fa;
+  color: #0073e6;
+  border: none;
+  border-radius: 16px;
+  font-size: 15px;
+  padding: 6px 14px;
+  margin-right: 4px;
+  transition: background 0.18s, color 0.18s;
+  font-weight: 500;
+}
+.action-btn:hover {
+  background: #e6f0fa;
+  color: #005bb5;
+}
+
+/* Modal tombol */
+.modal-actions button[type='submit'] {
+  background: #0073e6;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 9px 22px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.18s, box-shadow 0.18s, transform 0.12s;
+  box-shadow: 0 2px 8px rgba(0,115,230,0.08);
+}
+.modal-actions button[type='submit']:hover {
+  background: #005bb5;
+}
+.modal-actions button[type='button'] {
+  background: #f5f7fa;
+  color: #0073e6;
+  border: none;
+  border-radius: 24px;
+  padding: 9px 22px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+}
+.modal-actions button[type='button']:hover {
+  background: #e6f0fa;
+  color: #005bb5;
+}
+
+/* Spinner untuk tombol submit */
+.btn-spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid #fff;
+  border-top: 2.5px solid #0073e6;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0073e6;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.container {
+  display: flex;
+  max-width: 1200px;
+  margin: 32px auto 0 auto;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.sidebar {
+  width: 220px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  height: fit-content;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  padding: 10px 0;
+  color: #222;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.2s;
+  padding-left: 10px;
+}
+
+.sidebar ul li.selected {
+  background: #e6f0fa;
+  color: #0073e6;
+  font-weight: bold;
+}
+
+.sidebar ul li:hover {
+  background: #e6f0fa;
+}
+
+.main-feed {
+  flex: 1;
+  min-width: 0;
+  padding-bottom: 32px;
+}
+
+.post-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: box-shadow 0.2s;
+}
+
+.post-card:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.post-header .avatar {
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
+  background: #0073e6;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.timestamp {
+  color: #999;
+  font-weight: normal;
+  font-size: 13px;
+}
+
+.post-content p {
+  margin: 0;
+  font-size: 17px;
+  color: #222;
+}
+
+.post-actions {
+  margin-top: 14px;
+  display: flex;
+  gap: 16px;
+}
+
+/* Modal styling */
+.modal-bg {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.2);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-content {
+  background: #fff;
+  padding: 32px;
+  border-radius: 16px;
+  min-width: 320px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.15);
+  position: relative;
+}
+.modal-content h3 {
+  margin-top: 0;
+}
+.modal-content input, .modal-content select, .modal-content textarea {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
+.modal-content .modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.feed-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 16px 32px 16px;
+}
+
+@media (max-width: 900px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 0 12px;
+    gap: 8px;
+  }
+  .navbar .search-bar {
+    margin: 8px 0;
+    min-width: 120px;
+    max-width: 100%;
+  }
+  .container {
+    flex-direction: column;
+    gap: 0;
+    padding: 0 8px;
+  }
+  .sidebar {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 700px) {
+  .feed-container {
+    max-width: 100%;
+    padding: 0 4px 24px 4px;
+  }
+}
+
+.feed-container form.post-card {
+  box-sizing: border-box;
+}
+
+.feed-container textarea {
+  width: 100%;
+  min-height: 60px;
+  resize: vertical;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  padding: 12px 14px;
+  font-size: 16px;
+  font-family: inherit;
+  box-sizing: border-box;
+  background: #fafbfc;
+  transition: border 0.18s;
+}
+
+.feed-container textarea:focus {
+  border: 1.5px solid #0073e6;
+  outline: none;
+  background: #fff;
+}
+
+.feed-container select {
+  border-radius: 18px;
+  padding: 7px 18px;
+  font-size: 15px;
+  font-family: inherit;
+  border: 1.5px solid #e0e7ef;
+  background: #f5f7fa;
+  color: #222;
+  font-weight: 500;
+  transition: border 0.18s, box-shadow 0.18s;
+  box-shadow: 0 1px 4px rgba(0,115,230,0.04);
+  margin-left: 4px;
+}
+
+.feed-container select:focus {
+  border: 1.5px solid #0073e6;
+  background: #fff;
+  outline: none;
+}
